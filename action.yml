@@ -29,6 +29,15 @@ inputs:
 runs:
   using: "composite"
   steps:
+    - nmae: Debugging
+      shell: bash
+      run: |
+        echo "repo ref: ${{inputs.repository-ref}}"
+        echo "event_name: ${{github.event_name}}"
+        echo "ref: ${{github.ref}}"
+        echo "ref_name: ${{github.ref_name}}"
+        echo "sha: ${{github.sha}}"
+
     - name: Download artifact
       if: ${{ inputs.artifact-in-name }}
       uses: actions/download-artifact@v3
