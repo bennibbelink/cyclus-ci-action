@@ -1,5 +1,5 @@
 name: 'Build and test docker image from dockerfile'
-description: 'Greet someone'
+description: 'Custom action for building a docker image '
 inputs:
   repository:
     description: "the repo to checkout"
