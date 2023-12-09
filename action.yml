@@ -7,6 +7,7 @@ inputs:
   repository-ref:
     description: "the ref to checkout"
     required: false
+    default: ${{ github.event.after }}
   artifact-in-name:
     description: "input docker image artifact"
     required: false
@@ -29,15 +30,6 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - name: Debugging
-      shell: bash
-      run: |
-        echo "repo ref: ${{inputs.repository-ref}}"
-        echo "event_name: ${{github.event_name}}"
-        echo ".sha: ${{github.sha}}"
-        echo "event.after: ${{github.event.after}}"
-
-
     - name: Download artifact
       if: ${{ inputs.artifact-in-name }}
       uses: actions/download-artifact@v3
@@ -59,12 +51,6 @@ runs:
 
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v3
-
-    - name: Debug
-      shell: bash
-      run: |
-        pwd
-        ls
 
     - name: Build and export
       id: build-and-export
