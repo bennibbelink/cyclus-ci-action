@@ -7,7 +7,7 @@ inputs:
   repository-ref:
     description: "the ref to checkout"
     required: false
-    default: ${{ github.event.after }}
+    default: ${{ github.sha }}
   artifact-in-name:
     description: "input docker image artifact"
     required: false
