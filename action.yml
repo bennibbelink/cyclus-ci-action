@@ -39,6 +39,7 @@ runs:
         echo "sha: ${{github.sha}}"
         echo "pull_request sha: ${{github.event.pull_request.head.sha}}"
         echo "push sha: ${{github.event.push.after}}"
+        echo "github: ${{github}}"
 
 
     - name: Download artifact
