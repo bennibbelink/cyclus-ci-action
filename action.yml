@@ -37,6 +37,9 @@ runs:
         echo "ref: ${{github.ref}}"
         echo "ref_name: ${{github.ref_name}}"
         echo "sha: ${{github.sha}}"
+        echo "pull_request sha: ${{github.event.pull_request.head.sha}}"
+        echo "push sha: ${{github.event.push.after}}"
+
 
     - name: Download artifact
       if: ${{ inputs.artifact-in-name }}
