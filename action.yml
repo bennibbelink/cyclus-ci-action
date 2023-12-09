@@ -34,12 +34,8 @@ runs:
       run: |
         echo "repo ref: ${{inputs.repository-ref}}"
         echo "event_name: ${{github.event_name}}"
-        echo "ref: ${{github.ref}}"
-        echo "ref_name: ${{github.ref_name}}"
-        echo "sha: ${{github.sha}}"
-        echo "pull_request sha: ${{github.event.pull_request.head.sha}}"
-        echo "push sha: ${{github.event.push.after}}"
-        echo "github: ${{toJson(github)}}"
+        echo ".sha: ${{github.sha}}"
+        echo "event.after: ${{github.event.after}}"
 
 
     - name: Download artifact
