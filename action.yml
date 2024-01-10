@@ -11,8 +11,8 @@ inputs:
   artifact-in-name:
     description: "input docker image artifact"
     required: false
-  artifact-out-tag:
-    description: "tag for output docker image"
+  artifact-out-tags:
+    description: "list of tags for output docker image"
     required: false
   artifact-out-name:
     description: "name for output docker image"
@@ -63,7 +63,7 @@ runs:
         file: ${{ inputs.dockerfile-path }}
         target: ${{ inputs.docker-build-target }}
         push: ${{ inputs.push-image }}
-        tags: ${{ inputs.artifact-out-tag }}
+        tags: ${{ inputs.artifact-out-tags }}
         outputs: type=docker,dest=/tmp/${{ inputs.artifact-out-name }}.tar
         build-args: ${{ inputs.docker-build-args }}
 
