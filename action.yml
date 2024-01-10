@@ -23,6 +23,9 @@ inputs:
   docker-build-args:
     description: "list of build args for docker build"
     required: false
+  docker-build-target:
+    description: "stage of Dockerfile to build"
+    required: false
   push-image:
     description: "boolean of whether to push the built image to a registry"
     required: false
@@ -58,6 +61,7 @@ runs:
       with:
         context: .
         file: ${{ inputs.dockerfile-path }}
+        target: ${{ inputs.docker-build-target }}
         push: ${{ inputs.push-image }}
         tags: ${{ inputs.artifact-out-tag }}
         outputs: type=docker,dest=/tmp/${{ inputs.artifact-out-name }}.tar
