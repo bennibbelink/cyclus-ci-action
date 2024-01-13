@@ -8,6 +8,9 @@ inputs:
     description: "the ref to checkout"
     required: false
     default: ${{ github.sha }}
+  pull-image-name:
+    description: "image to pull prior to building the dockerfile"
+    required: false
   artifact-in-name:
     description: "input docker image artifact"
     required: false
@@ -33,6 +36,12 @@ inputs:
 runs:
   using: "composite"
   steps:
+    - name: Pull Image
+      if: ${{ inputs.pull-image-name }}
+      shell: bash
+      run: |
+        docker pull ${{ inputs.pull-image-name }}
+
     - name: Download artifact
       if: ${{ inputs.artifact-in-name }}
       uses: actions/download-artifact@v3
